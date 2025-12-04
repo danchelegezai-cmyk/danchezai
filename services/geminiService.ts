@@ -1,11 +1,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { EventFormData, GeneratedCopyResult } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const generateEventCopy = async (
   formData: EventFormData
 ): Promise<GeneratedCopyResult> => {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   // Format prizes into a readable string list
   const prizesText = formData.prizes
     .filter(p => p.name.trim() || p.content.trim())
